@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="UraniumOwner - Projects, mods, code, experiments and development posts.">
+    <meta
+        name="description"
+        content="UraniumOwner - Projects, code, development updates and more."
+    >
 
     <title>UraniumOwner | Developer Hub</title>
 
     <style>
 
         /* ==========================================
-           CSS
+           GLOBAL
         ========================================== */
 
         * {
@@ -40,12 +41,18 @@
             text-decoration: none;
         }
 
+
+        /* ==========================================
+           NAVIGATION
+        ========================================== */
+
         nav {
             position: sticky;
             top: 0;
             z-index: 1000;
 
             background: rgba(7, 11, 20, 0.92);
+
             backdrop-filter: blur(15px);
 
             border-bottom: 1px solid #1e293b;
@@ -54,31 +61,40 @@
         .nav-container {
             max-width: 1200px;
             margin: auto;
+
             padding: 17px 25px;
 
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             gap: 20px;
         }
 
         .logo {
             font-size: 22px;
             font-weight: bold;
+
             color: #60a5fa;
+
             white-space: nowrap;
         }
 
         .nav-links {
             display: flex;
+
             gap: 20px;
+
             list-style: none;
+
             flex-wrap: wrap;
+
             justify-content: center;
         }
 
         .nav-links a {
             color: #cbd5e1;
+
             transition: 0.2s;
         }
 
@@ -86,14 +102,21 @@
             color: #60a5fa;
         }
 
+
+        /* ==========================================
+           HERO
+        ========================================== */
+
         .hero {
             min-height: 78vh;
 
             display: flex;
+
             justify-content: center;
             align-items: center;
 
             text-align: center;
+
             padding: 80px 20px;
         }
 
@@ -103,29 +126,37 @@
 
         .hero h1 {
             font-size: clamp(45px, 8vw, 85px);
+
             margin-bottom: 12px;
 
-            background: linear-gradient(
-                90deg,
-                #60a5fa,
-                #a78bfa,
-                #22d3ee
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    #60a5fa,
+                    #a78bfa,
+                    #22d3ee
+                );
 
             -webkit-background-clip: text;
+
             color: transparent;
         }
 
         .hero h2 {
             color: #cbd5e1;
+
             font-size: 27px;
+
             margin-bottom: 20px;
         }
 
         .hero p {
             color: #94a3b8;
+
             font-size: 19px;
+
             max-width: 700px;
+
             margin: auto;
         }
 
@@ -133,19 +164,30 @@
             margin-top: 30px;
 
             display: flex;
+
             justify-content: center;
+
             flex-wrap: wrap;
+
             gap: 12px;
         }
 
+
+        /* ==========================================
+           BUTTONS
+        ========================================== */
+
         .button {
             display: inline-block;
+
             padding: 13px 22px;
 
             background: #2563eb;
+
             color: white;
 
             border-radius: 10px;
+
             font-weight: bold;
 
             transition: 0.2s;
@@ -153,6 +195,7 @@
 
         .button:hover {
             background: #3b82f6;
+
             transform: translateY(-3px);
         }
 
@@ -164,55 +207,115 @@
             background: #334155;
         }
 
+        .small-button {
+            display: inline-block;
+
+            padding: 9px 14px;
+
+            background: #2563eb;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .small-button:hover {
+            background: #3b82f6;
+        }
+
+        .small-button.secondary {
+            background: #1e293b;
+        }
+
+        .small-button.secondary:hover {
+            background: #334155;
+        }
+
+
+        /* ==========================================
+           SECTIONS
+        ========================================== */
+
         section {
             max-width: 1200px;
+
             margin: auto;
+
             padding: 80px 25px;
         }
 
         .section-title {
             font-size: 38px;
+
             color: #93c5fd;
+
             margin-bottom: 10px;
         }
 
         .section-description {
             color: #94a3b8;
+
             font-size: 17px;
+
             margin-bottom: 35px;
         }
 
+
+        /* ==========================================
+           ABOUT
+        ========================================== */
+
         .about-box {
             background: #111827;
+
             border: 1px solid #1e293b;
+
             border-radius: 16px;
+
             padding: 30px;
         }
 
         .about-box p {
             color: #cbd5e1;
+
             margin-bottom: 15px;
         }
+
+
+        /* ==========================================
+           SEARCH
+        ========================================== */
 
         .search-box {
             width: 100%;
 
             background: #0f172a;
+
             color: white;
 
             border: 1px solid #334155;
+
             border-radius: 10px;
 
             padding: 14px 17px;
+
             font-size: 16px;
 
             outline: none;
+
             margin-bottom: 25px;
         }
 
         .search-box:focus {
             border-color: #60a5fa;
         }
+
+
+        /* ==========================================
+           CARD GRID
+        ========================================== */
 
         .grid {
             display: grid;
@@ -228,9 +331,11 @@
 
         .card {
             background: #111827;
+
             border: 1px solid #1e293b;
 
             border-radius: 16px;
+
             overflow: hidden;
 
             transition:
@@ -241,16 +346,19 @@
 
         .card:hover {
             transform: translateY(-5px);
+
             border-color: #3b82f6;
 
             box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.3);
+                0 15px 40px
+                rgba(0, 0, 0, 0.3);
         }
 
         .card-image {
             height: 165px;
 
             display: flex;
+
             justify-content: center;
             align-items: center;
 
@@ -270,32 +378,41 @@
 
         .card h3 {
             font-size: 23px;
+
             margin-bottom: 5px;
         }
 
         .date {
             color: #64748b;
+
             font-size: 14px;
+
             margin-bottom: 14px;
         }
 
         .description {
             color: #94a3b8;
+
             margin-bottom: 18px;
         }
 
         .tags {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 7px;
+
             margin-bottom: 20px;
         }
 
         .tag {
             background: #1e293b;
+
             color: #93c5fd;
 
             padding: 5px 9px;
+
             border-radius: 6px;
 
             font-size: 12px;
@@ -303,48 +420,36 @@
 
         .card-buttons {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 10px;
         }
 
-        .small-button {
-            display: inline-block;
 
-            padding: 9px 14px;
-
-            background: #2563eb;
-            border-radius: 8px;
-
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .small-button:hover {
-            background: #3b82f6;
-        }
-
-        .small-button.secondary {
-            background: #1e293b;
-        }
-
-        .small-button.secondary:hover {
-            background: #334155;
-        }
+        /* ==========================================
+           FILTERS
+        ========================================== */
 
         .filters {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 10px;
+
             margin-bottom: 25px;
         }
 
         .filter {
             background: #1e293b;
+
             border: none;
 
             color: #cbd5e1;
 
             padding: 9px 15px;
+
             border-radius: 8px;
 
             cursor: pointer;
@@ -353,8 +458,10 @@
         .filter:hover,
         .filter.active {
             background: #2563eb;
+
             color: white;
         }
+
 
         /* ==========================================
            CODE LAB
@@ -376,6 +483,7 @@
             background: #0b1220;
 
             border: 1px solid #1e293b;
+
             border-radius: 14px;
 
             overflow: hidden;
@@ -385,6 +493,7 @@
 
         .code-card:hover {
             border-color: #475569;
+
             transform: translateY(-3px);
         }
 
@@ -396,22 +505,27 @@
             border-bottom: 1px solid #1e293b;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
         }
 
         .language {
             color: #60a5fa;
+
             font-weight: bold;
         }
 
         .code-file {
             color: #64748b;
+
             font-size: 12px;
         }
 
         pre {
             overflow-x: auto;
+
             padding: 20px;
 
             font-family:
@@ -430,41 +544,99 @@
         }
 
         .code-note {
-            padding: 0 20px 18px;
+            padding:
+                0
+                20px
+                18px;
+
             color: #64748b;
+
             font-size: 13px;
         }
 
+
+        /* ==========================================
+           SKILLS
+        ========================================== */
+
         .skills {
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 12px;
         }
 
         .skill {
             background: #111827;
+
             border: 1px solid #1e293b;
 
             padding: 12px 18px;
+
             border-radius: 10px;
 
             color: #cbd5e1;
         }
 
+
+        /* ==========================================
+           CONTACT
+        ========================================== */
+
         .contact-box {
             background: #111827;
 
             border: 1px solid #1e293b;
+
             border-radius: 16px;
 
             padding: 40px;
+
             text-align: center;
         }
 
         .contact-box p {
             color: #94a3b8;
+
             margin-bottom: 25px;
         }
+
+
+        /* ==========================================
+           EMPTY STATES
+        ========================================== */
+
+        .empty-state {
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            background: #111827;
+
+            border: 1px solid #1e293b;
+
+            border-radius: 16px;
+        }
+
+        .empty-state h3 {
+            color: #cbd5e1;
+
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: #64748b;
+        }
+
+
+        /* ==========================================
+           FOOTER
+        ========================================== */
 
         footer {
             border-top: 1px solid #1e293b;
@@ -476,14 +648,10 @@
             color: #64748b;
         }
 
-        .no-results {
-            display: none;
 
-            color: #64748b;
-            text-align: center;
-
-            padding: 30px;
-        }
+        /* ==========================================
+           MOBILE
+        ========================================== */
 
         @media (max-width: 700px) {
 
@@ -524,27 +692,39 @@
             <ul class="nav-links">
 
                 <li>
-                    <a href="#home">Home</a>
+                    <a href="#home">
+                        Home
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#projects">Projects</a>
+                    <a href="#projects">
+                        Projects
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#mods">Mods</a>
+                    <a href="#mods">
+                        Mods
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#posts">Posts</a>
+                    <a href="#posts">
+                        Posts
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#code">Code Lab</a>
+                    <a href="#code">
+                        Code Lab
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#about">About</a>
+                    <a href="#about">
+                        About
+                    </a>
                 </li>
 
             </ul>
@@ -571,14 +751,14 @@
             </h1>
 
             <h2>
-                Developer • Creator • Modder • Experimenter
+                Developer • Creator • Experimenter
             </h2>
 
             <p>
                 Welcome to my corner of the internet.
-                Projects, mods, code, experiments,
-                development updates and whatever else
-                I decide to build.
+                Projects, code, development updates,
+                experiments and whatever else I decide
+                to build.
             </p>
 
             <div class="hero-buttons">
@@ -648,9 +828,18 @@
 
         <div
             id="projectNoResults"
-            class="no-results"
+            class="empty-state"
+            style="display: none;"
         >
-            No projects found.
+
+            <h3>
+                No projects found
+            </h3>
+
+            <p>
+                Try a different search.
+            </p>
+
         </div>
 
     </section>
@@ -671,55 +860,10 @@
             Mods and add-ons released on this site.
         </p>
 
-        <input
-            id="modSearch"
-            class="search-box"
-            placeholder="🔎 Search mods or games..."
-        >
-
-        <div class="filters">
-
-            <button
-                class="filter active"
-                data-filter="all"
-            >
-                All
-            </button>
-
-            <button
-                class="filter"
-                data-filter="Roblox"
-            >
-                Roblox
-            </button>
-
-            <button
-                class="filter"
-                data-filter="Minecraft"
-            >
-                Minecraft
-            </button>
-
-            <button
-                class="filter"
-                data-filter="Other"
-            >
-                Other
-            </button>
-
-        </div>
-
         <div
             id="modsGrid"
             class="grid"
         ></div>
-
-        <div
-            id="modNoResults"
-            class="no-results"
-        >
-            No mods found.
-        </div>
 
     </section>
 
@@ -759,7 +903,9 @@
         </h2>
 
         <p class="section-description">
-            A chaotic collection of languages and technologies.
+            A chaotic collection of programming languages,
+            markup languages, scripting languages and
+            data formats.
         </p>
 
         <div
@@ -799,7 +945,7 @@
 
             <p>
                 This site is where I can publish
-                projects, mods and development updates.
+                projects and development updates.
             </p>
 
         </div>
@@ -819,36 +965,111 @@
         </h2>
 
         <p class="section-description">
-            Languages and technologies I work with or explore.
+            Languages and technologies I work with
+            or explore.
         </p>
 
         <div class="skills">
 
-            <div class="skill">HTML</div>
-            <div class="skill">CSS</div>
-            <div class="skill">JavaScript</div>
-            <div class="skill">TypeScript</div>
-            <div class="skill">Python</div>
-            <div class="skill">Lua</div>
-            <div class="skill">Luau</div>
-            <div class="skill">C</div>
-            <div class="skill">C++</div>
-            <div class="skill">C#</div>
-            <div class="skill">Java</div>
-            <div class="skill">PHP</div>
-            <div class="skill">SQL</div>
-            <div class="skill">Rust</div>
-            <div class="skill">Go</div>
-            <div class="skill">Kotlin</div>
-            <div class="skill">Swift</div>
-            <div class="skill">Ruby</div>
-            <div class="skill">Bash</div>
-            <div class="skill">PowerShell</div>
-            <div class="skill">Assembly</div>
-            <div class="skill">JSON</div>
-            <div class="skill">XML</div>
-            <div class="skill">YAML</div>
-            <div class="skill">Markdown</div>
+            <div class="skill">
+                HTML
+            </div>
+
+            <div class="skill">
+                CSS
+            </div>
+
+            <div class="skill">
+                JavaScript
+            </div>
+
+            <div class="skill">
+                TypeScript
+            </div>
+
+            <div class="skill">
+                Python
+            </div>
+
+            <div class="skill">
+                Lua
+            </div>
+
+            <div class="skill">
+                Luau
+            </div>
+
+            <div class="skill">
+                C
+            </div>
+
+            <div class="skill">
+                C++
+            </div>
+
+            <div class="skill">
+                C#
+            </div>
+
+            <div class="skill">
+                Java
+            </div>
+
+            <div class="skill">
+                PHP
+            </div>
+
+            <div class="skill">
+                SQL
+            </div>
+
+            <div class="skill">
+                Rust
+            </div>
+
+            <div class="skill">
+                Go
+            </div>
+
+            <div class="skill">
+                Kotlin
+            </div>
+
+            <div class="skill">
+                Swift
+            </div>
+
+            <div class="skill">
+                Ruby
+            </div>
+
+            <div class="skill">
+                Bash
+            </div>
+
+            <div class="skill">
+                PowerShell
+            </div>
+
+            <div class="skill">
+                Assembly
+            </div>
+
+            <div class="skill">
+                JSON
+            </div>
+
+            <div class="skill">
+                XML
+            </div>
+
+            <div class="skill">
+                YAML
+            </div>
+
+            <div class="skill">
+                Markdown
+            </div>
 
         </div>
 
@@ -921,7 +1142,12 @@
                     "An AI-powered coding project for generating and experimenting with code.",
 
                 technologies:
-                    ["HTML", "CSS", "JavaScript", "AI"],
+                    [
+                        "HTML",
+                        "CSS",
+                        "JavaScript",
+                        "AI"
+                    ],
 
                 date: "2026",
 
@@ -934,10 +1160,14 @@
                 title: "UraniumOwner Website",
 
                 description:
-                    "My personal developer portfolio, mod hub and project website.",
+                    "My personal developer portfolio and project website.",
 
                 technologies:
-                    ["HTML", "CSS", "JavaScript"],
+                    [
+                        "HTML",
+                        "CSS",
+                        "JavaScript"
+                    ],
 
                 date: "September 2026",
 
@@ -954,7 +1184,9 @@
                     "A future game project currently being planned.",
 
                 technologies:
-                    ["Game Development"],
+                    [
+                        "Game Development"
+                    ],
 
                 date: "Coming Soon",
 
@@ -969,55 +1201,12 @@
 
         /* ==========================================
            MOD DATABASE
+
+           EMPTY ON PURPOSE.
+           Add real mods here later.
         ========================================== */
 
-        const mods = [
-
-            {
-                title: "Example Roblox Mod",
-
-                game: "Roblox",
-
-                version: "1.0",
-
-                description:
-                    "Example listing for a future Roblox mod.",
-
-                technologies:
-                    ["Roblox", "Luau"],
-
-                date: "September 2026",
-
-                icon: "🧩",
-
-                download: "#",
-
-                details: "#"
-            },
-
-            {
-                title: "Example Minecraft Mod",
-
-                game: "Minecraft",
-
-                version: "1.0",
-
-                description:
-                    "Example listing for a future Minecraft mod.",
-
-                technologies:
-                    ["Minecraft", "Java"],
-
-                date: "Coming Soon",
-
-                icon: "⛏️",
-
-                download: "#",
-
-                details: "#"
-            }
-
-        ];
+        const mods = [];
 
 
 
@@ -1028,36 +1217,45 @@
         const posts = [
 
             {
-                title: "Welcome to My Website!",
+                title:
+                    "Welcome to My Website!",
 
                 description:
-                    "The new UraniumOwner developer and mod hub is officially online.",
+                    "The new UraniumOwner developer and project hub is officially online.",
 
-                date: "September 2026",
+                date:
+                    "September 2026",
 
-                icon: "🎉"
+                icon:
+                    "🎉"
             },
 
             {
-                title: "Building the Mod Hub",
+                title:
+                    "Building the Developer Hub",
 
                 description:
-                    "I'm working on a system for publishing and organizing mods.",
+                    "I'm working on a website for publishing projects and development updates.",
 
-                date: "September 2026",
+                date:
+                    "September 2026",
 
-                icon: "🧩"
+                icon:
+                    "💻"
             },
 
             {
-                title: "Learning Web Development",
+                title:
+                    "Learning Web Development",
 
                 description:
                     "Experimenting with HTML, CSS, JavaScript and a whole lot more.",
 
-                date: "2026",
+                date:
+                    "2026",
 
-                icon: "💻"
+                icon:
+                    "🌐"
             }
 
         ];
@@ -1072,6 +1270,7 @@
 
             {
                 language: "HTML",
+
                 file: "index.html",
 
                 code:
@@ -1079,11 +1278,13 @@
 <p>Welcome to my website.</p>`,
 
                 note:
-                    "The structure of the website."
+                    "The structure of a website."
             },
+
 
             {
                 language: "CSS",
+
                 file: "style.css",
 
                 code:
@@ -1093,11 +1294,13 @@
 }`,
 
                 note:
-                    "Controls how the website looks."
+                    "Controls how a website looks."
             },
+
 
             {
                 language: "JavaScript",
+
                 file: "script.js",
 
                 code:
@@ -1109,8 +1312,10 @@ console.log(money);`,
                     "Adds logic and interactivity."
             },
 
+
             {
                 language: "TypeScript",
+
                 file: "app.ts",
 
                 code:
@@ -1122,8 +1327,10 @@ console.log(project);`,
                     "JavaScript with static types."
             },
 
+
             {
                 language: "Python",
+
                 file: "main.py",
 
                 code:
@@ -1135,8 +1342,10 @@ print(project)`,
                     "A simple Python program."
             },
 
+
             {
                 language: "Lua",
+
                 file: "main.lua",
 
                 code:
@@ -1145,11 +1354,13 @@ print(project)`,
 print(message)`,
 
                 note:
-                    "Lightweight scripting language."
+                    "A lightweight scripting language."
             },
+
 
             {
                 language: "Luau",
+
                 file: "script.luau",
 
                 code:
@@ -1161,8 +1372,10 @@ print("Money:", money)`,
                     "The scripting language used by Roblox."
             },
 
+
             {
                 language: "C",
+
                 file: "main.c",
 
                 code:
@@ -1177,8 +1390,10 @@ int main() {
                     "Classic systems programming."
             },
 
+
             {
                 language: "C++",
+
                 file: "main.cpp",
 
                 code:
@@ -1190,11 +1405,13 @@ int main() {
 }`,
 
                 note:
-                    "Powerful compiled programming language."
+                    "A powerful compiled language."
             },
+
 
             {
                 language: "C#",
+
                 file: "Program.cs",
 
                 code:
@@ -1203,11 +1420,13 @@ int main() {
 Console.WriteLine("Hello!");`,
 
                 note:
-                    "Commonly used with .NET and game development."
+                    "Commonly used with .NET and games."
             },
+
 
             {
                 language: "Java",
+
                 file: "Main.java",
 
                 code:
@@ -1218,11 +1437,13 @@ Console.WriteLine("Hello!");`,
 }`,
 
                 note:
-                    "Popular general-purpose language."
+                    "A popular general-purpose language."
             },
+
 
             {
                 language: "PHP",
+
                 file: "index.php",
 
                 code:
@@ -1234,11 +1455,13 @@ echo $message;
 ?>`,
 
                 note:
-                    "Server-side web programming."
+                    "A server-side web language."
             },
+
 
             {
                 language: "SQL",
+
                 file: "database.sql",
 
                 code:
@@ -1250,8 +1473,10 @@ WHERE published = true;`,
                     "Used to work with databases."
             },
 
+
             {
                 language: "Rust",
+
                 file: "main.rs",
 
                 code:
@@ -1263,8 +1488,10 @@ WHERE published = true;`,
                     "A memory-safe systems language."
             },
 
+
             {
                 language: "Go",
+
                 file: "main.go",
 
                 code:
@@ -1277,11 +1504,13 @@ func main() {
 }`,
 
                 note:
-                    "Designed for simple, fast software."
+                    "A fast and simple compiled language."
             },
+
 
             {
                 language: "Kotlin",
+
                 file: "Main.kt",
 
                 code:
@@ -1290,11 +1519,13 @@ func main() {
 }`,
 
                 note:
-                    "Modern JVM programming language."
+                    "A modern JVM language."
             },
+
 
             {
                 language: "Swift",
+
                 file: "main.swift",
 
                 code:
@@ -1306,8 +1537,10 @@ print(message)`,
                     "Apple's modern programming language."
             },
 
+
             {
                 language: "Ruby",
+
                 file: "main.rb",
 
                 code:
@@ -1316,11 +1549,13 @@ print(message)`,
 puts message`,
 
                 note:
-                    "Readable dynamic programming language."
+                    "A readable dynamic language."
             },
+
 
             {
                 language: "Bash",
+
                 file: "script.sh",
 
                 code:
@@ -1332,8 +1567,10 @@ echo "Hello from Bash!"`,
                     "Shell scripting on Unix-like systems."
             },
 
+
             {
                 language: "PowerShell",
+
                 file: "script.ps1",
 
                 code:
@@ -1345,8 +1582,10 @@ Write-Host $message`,
                     "PowerShell scripting."
             },
 
+
             {
                 language: "Assembly",
+
                 file: "main.asm",
 
                 code:
@@ -1361,8 +1600,10 @@ _start:
                     "Very low-level programming."
             },
 
+
             {
                 language: "JSON",
+
                 file: "project.json",
 
                 code:
@@ -1372,11 +1613,13 @@ _start:
 }`,
 
                 note:
-                    "Common data format for web applications."
+                    "A common data format."
             },
+
 
             {
                 language: "XML",
+
                 file: "project.xml",
 
                 code:
@@ -1386,11 +1629,13 @@ _start:
 </project>`,
 
                 note:
-                    "Structured markup and data format."
+                    "Structured markup and data."
             },
+
 
             {
                 language: "YAML",
+
                 file: "config.yml",
 
                 code:
@@ -1399,11 +1644,13 @@ _start:
   version: 1.0`,
 
                 note:
-                    "Human-readable configuration format."
+                    "A human-readable configuration format."
             },
+
 
             {
                 language: "Markdown",
+
                 file: "README.md",
 
                 code:
@@ -1416,7 +1663,7 @@ This is my project.
 - Yes`,
 
                 note:
-                    "Used heavily for documentation."
+                    "Commonly used for documentation."
             }
 
         ];
@@ -1424,7 +1671,7 @@ This is my project.
 
 
         /* ==========================================
-           PROJECT RENDERER
+           PROJECT RENDERING
         ========================================== */
 
         const projectsGrid =
@@ -1433,7 +1680,9 @@ This is my project.
             );
 
 
-        function renderProjects(search = "") {
+        function renderProjects(
+            search = ""
+        ) {
 
             projectsGrid.innerHTML = "";
 
@@ -1446,6 +1695,7 @@ This is my project.
                     function(project) {
 
                         return (
+
                             project.title
                                 .toLowerCase()
                                 .includes(text)
@@ -1462,15 +1712,20 @@ This is my project.
                                 .join(" ")
                                 .toLowerCase()
                                 .includes(text)
+
                         );
 
                     }
                 );
 
 
-            document.getElementById(
-                "projectNoResults"
-            ).style.display =
+            const noResults =
+                document.getElementById(
+                    "projectNoResults"
+                );
+
+
+            noResults.style.display =
                 results.length === 0
                     ? "block"
                     : "none";
@@ -1483,6 +1738,7 @@ This is my project.
                         document.createElement(
                             "article"
                         );
+
 
                     card.className =
                         "card";
@@ -1546,7 +1802,9 @@ This is my project.
                     `;
 
 
-                    projectsGrid.appendChild(card);
+                    projectsGrid.appendChild(
+                        card
+                    );
 
                 }
             );
@@ -1563,7 +1821,9 @@ This is my project.
         ========================================== */
 
         document
-            .getElementById("projectSearch")
+            .getElementById(
+                "projectSearch"
+            )
             .addEventListener(
                 "input",
                 function() {
@@ -1587,79 +1847,54 @@ This is my project.
             );
 
 
-        let currentModFilter =
-            "all";
-
-
-        function renderMods(search = "") {
+        function renderMods() {
 
             modsGrid.innerHTML = "";
 
-            const text =
-                search.toLowerCase();
+
+            if (mods.length === 0) {
+
+                const empty =
+                    document.createElement(
+                        "div"
+                    );
 
 
-            const results =
-                mods.filter(
-                    function(mod) {
-
-                        const filterMatch =
-                            currentModFilter === "all"
-                            ||
-                            mod.game === currentModFilter
-                            ||
-                            (
-                                currentModFilter === "Other"
-                                &&
-                                mod.game !== "Roblox"
-                                &&
-                                mod.game !== "Minecraft"
-                            );
+                empty.className =
+                    "empty-state";
 
 
-                        const searchMatch =
-                            mod.title
-                                .toLowerCase()
-                                .includes(text)
+                empty.innerHTML = `
 
-                            ||
+                    <h3>
+                        🧩 No mods published yet
+                    </h3>
 
-                            mod.game
-                                .toLowerCase()
-                                .includes(text)
+                    <p>
+                        There aren't any mods here yet.
+                        Check back later!
+                    </p>
 
-                            ||
-
-                            mod.description
-                                .toLowerCase()
-                                .includes(text);
+                `;
 
 
-                        return (
-                            filterMatch
-                            &&
-                            searchMatch
-                        );
-
-                    }
+                modsGrid.appendChild(
+                    empty
                 );
 
 
-            document.getElementById(
-                "modNoResults"
-            ).style.display =
-                results.length === 0
-                    ? "block"
-                    : "none";
+                return;
+            }
 
 
-            results.forEach(
+            mods.forEach(
                 function(mod) {
 
                     const card =
                         document.createElement(
                             "article"
                         );
+
 
                     card.className =
                         "card";
@@ -1734,7 +1969,9 @@ This is my project.
                     `;
 
 
-                    modsGrid.appendChild(card);
+                    modsGrid.appendChild(
+                        card
+                    );
 
                 }
             );
@@ -1743,78 +1980,6 @@ This is my project.
 
 
         renderMods();
-
-
-
-        /* ==========================================
-           MOD SEARCH
-        ========================================== */
-
-        document
-            .getElementById("modSearch")
-            .addEventListener(
-                "input",
-                function() {
-
-                    renderMods(
-                        this.value
-                    );
-
-                }
-            );
-
-
-
-        /* ==========================================
-           MOD FILTERS
-        ========================================== */
-
-        document
-            .querySelectorAll(".filter")
-            .forEach(
-                function(button) {
-
-                    button.addEventListener(
-                        "click",
-                        function() {
-
-                            document
-                                .querySelectorAll(
-                                    ".filter"
-                                )
-                                .forEach(
-                                    function(btn) {
-
-                                        btn.classList.remove(
-                                            "active"
-                                        );
-
-                                    }
-                                );
-
-
-                            this.classList.add(
-                                "active"
-                            );
-
-
-                            currentModFilter =
-                                this.dataset.filter;
-
-
-                            renderMods(
-                                document
-                                    .getElementById(
-                                        "modSearch"
-                                    )
-                                    .value
-                            );
-
-                        }
-                    );
-
-                }
-            );
 
 
 
@@ -1835,6 +2000,7 @@ This is my project.
                     document.createElement(
                         "article"
                     );
+
 
                 card.className =
                     "card";
@@ -1861,7 +2027,7 @@ This is my project.
                         </p>
 
                         <a
-                            class="project-link"
+                            class="small-button"
                             href="#"
                         >
                             Read Post →
@@ -1882,7 +2048,7 @@ This is my project.
 
 
         /* ==========================================
-           CODE LAB
+           CODE LAB RENDERING
         ========================================== */
 
         const codeLab =
@@ -1945,14 +2111,32 @@ This is my project.
         function escapeHTML(text) {
 
             return text
-                .replaceAll("&", "&amp;")
-                .replaceAll("<", "&lt;")
-                .replaceAll(">", "&gt;")
-                .replaceAll('"', "&quot;")
-                .replaceAll("'", "&#039;");
+                .replaceAll(
+                    "&",
+                    "&amp;"
+                )
+
+                .replaceAll(
+                    "<",
+                    "&lt;"
+                )
+
+                .replaceAll(
+                    ">",
+                    "&gt;"
+                )
+
+                .replaceAll(
+                    '"',
+                    "&quot;"
+                )
+
+                .replaceAll(
+                    "'",
+                    "&#039;"
+                );
 
         }
-
 
     </script>
 
