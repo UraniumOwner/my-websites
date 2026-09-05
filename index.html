@@ -1,339 +1,1962 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>My First Website</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="UraniumOwner - Projects, mods, code, experiments and development posts.">
+
+    <title>UraniumOwner | Developer Hub</title>
 
     <style>
-        body {
-            background-color: #111827;
-            color: white;
-            font-family: Arial, sans-serif;
+
+        /* ==========================================
+           CSS
+        ========================================== */
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #070b14;
+            color: #f8fafc;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(7, 11, 20, 0.92);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 17px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #60a5fa;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        .hero {
+            min-height: 78vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            margin-bottom: 12px;
+
+            background: linear-gradient(
+                90deg,
+                #60a5fa,
+                #a78bfa,
+                #22d3ee
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero h2 {
+            color: #cbd5e1;
+            font-size: 27px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 19px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+
+            background: #2563eb;
+            color: white;
+
+            border-radius: 10px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: #3b82f6;
+            transform: translateY(-3px);
+        }
+
+        .button.secondary {
+            background: #1e293b;
+        }
+
+        .button.secondary:hover {
+            background: #334155;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .section-title {
+            font-size: 38px;
+            color: #93c5fd;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            color: #94a3b8;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .about-box {
+            background: #111827;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .about-box p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+
+        .search-box {
+            width: 100%;
+
+            background: #0f172a;
+            color: white;
+
+            border: 1px solid #334155;
+            border-radius: 10px;
+
+            padding: 14px 17px;
+            font-size: 16px;
+
+            outline: none;
+            margin-bottom: 25px;
+        }
+
+        .search-box:focus {
+            border-color: #60a5fa;
+        }
+
+        .grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 22px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #1e293b;
+
+            border-radius: 16px;
+            overflow: hidden;
+
+            transition:
+                transform 0.2s,
+                border-color 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-image {
+            height: 165px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 55px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #172554,
+                    #312e81
+                );
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .card h3 {
+            font-size: 23px;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        .description {
+            color: #94a3b8;
+            margin-bottom: 18px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #1e293b;
+            color: #93c5fd;
+
+            padding: 5px 9px;
+            border-radius: 6px;
+
+            font-size: 12px;
+        }
+
+        .card-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .small-button {
+            display: inline-block;
+
+            padding: 9px 14px;
+
+            background: #2563eb;
+            border-radius: 8px;
+
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .small-button:hover {
+            background: #3b82f6;
+        }
+
+        .small-button.secondary {
+            background: #1e293b;
+        }
+
+        .small-button.secondary:hover {
+            background: #334155;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .filter {
+            background: #1e293b;
+            border: none;
+
+            color: #cbd5e1;
+
+            padding: 9px 15px;
+            border-radius: 8px;
+
+            cursor: pointer;
+        }
+
+        .filter:hover,
+        .filter.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* ==========================================
+           CODE LAB
+        ========================================== */
+
+        .code-lab {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(300px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .code-card {
+            background: #0b1220;
+
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            transition: 0.2s;
+        }
+
+        .code-card:hover {
+            border-color: #475569;
+            transform: translateY(-3px);
+        }
+
+        .code-header {
+            padding: 13px 17px;
+
+            background: #111827;
+
+            border-bottom: 1px solid #1e293b;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .language {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .code-file {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        pre {
+            overflow-x: auto;
+            padding: 20px;
+
+            font-family:
+                "Courier New",
+                monospace;
+
+            font-size: 13px;
+
+            color: #dbeafe;
+        }
+
+        code {
+            font-family:
+                "Courier New",
+                monospace;
+        }
+
+        .code-note {
+            padding: 0 20px 18px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            background: #111827;
+            border: 1px solid #1e293b;
+
+            padding: 12px 18px;
+            border-radius: 10px;
+
+            color: #cbd5e1;
+        }
+
+        .contact-box {
+            background: #111827;
+
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+
             padding: 40px;
             text-align: center;
         }
 
-        h1 {
-            color: #60a5fa;
-            font-size: 42px;
+        .contact-box p {
+            color: #94a3b8;
+            margin-bottom: 25px;
         }
 
-        h2 {
-            color: #93c5fd;
-            margin-top: 35px;
-        }
+        footer {
+            border-top: 1px solid #1e293b;
 
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
+            text-align: center;
 
-        ul {
-            background-color: #1f2937;
-            padding: 20px 40px;
-            border-radius: 12px;
-            text-align: left;
-            max-width: 400px;
-            margin: auto;
-        }
-
-        li {
-            margin: 10px;
-            font-size: 18px;
-        }
-
-        a {
-            color: #60a5fa;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        input {
-            background-color: #1f2937;
-            color: white;
-            border: 1px solid #374151;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 8px;
-            margin: 5px;
-            outline: none;
-        }
-
-        input:focus {
-            border-color: #60a5fa;
-        }
-
-        button {
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            padding: 14px 25px;
-            font-size: 18px;
-            border-radius: 10px;
-            cursor: pointer;
-            margin: 10px 5px;
-        }
-
-        button:hover {
-            background-color: #1d4ed8;
-        }
-
-        .logout {
-            background-color: #4b5563;
-        }
-
-        .logout:hover {
-            background-color: #374151;
-        }
-
-        #money {
-            font-size: 32px;
-            font-weight: bold;
-            color: #4ade80;
-            margin: 15px;
-        }
-
-        #reward {
-            font-size: 22px;
-            margin-top: 20px;
-            min-height: 30px;
-        }
-
-        #loginSection,
-        #gameSection {
-            background-color: #1f2937;
-            max-width: 600px;
-            margin: 30px auto;
             padding: 30px;
-            border-radius: 15px;
+
+            color: #64748b;
         }
 
-        #gameSection {
+        .no-results {
             display: none;
+
+            color: #64748b;
+            text-align: center;
+
+            padding: 30px;
         }
 
-        #accountName {
-            color: #60a5fa;
-            font-weight: bold;
+        @media (max-width: 700px) {
+
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                font-size: 14px;
+            }
+
+            section {
+                padding: 60px 18px;
+            }
+
         }
 
-        .error {
-            color: #f87171;
-        }
-
-        .success {
-            color: #4ade80;
-        }
     </style>
+
 </head>
+
 
 <body>
 
-    <h1>Welcome to My Website!</h1>
 
-    <p>
-        I am learning web development!
-    </p>
+    <!-- ==========================================
+         NAVIGATION
+    ========================================== -->
 
-    <h2>About Me</h2>
+    <nav>
 
-    <p>
-        I like coding, computers, and space.
-    </p>
+        <div class="nav-container">
 
-    <h2>My Projects</h2>
+            <div class="logo">
+                UraniumOwner
+            </div>
 
-    <ul>
-        <li>CodeForge AI</li>
-        <li>My future games</li>
-        <li>Random experiments</li>
-    </ul>
+            <ul class="nav-links">
 
-    <div id="loginSection">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
 
-        <h2>🔐 Sign In</h2>
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
 
-        <p>
-            Enter a username to load your fake-money account.
+                <li>
+                    <a href="#mods">Mods</a>
+                </li>
+
+                <li>
+                    <a href="#posts">Posts</a>
+                </li>
+
+                <li>
+                    <a href="#code">Code Lab</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ==========================================
+         HERO
+    ========================================== -->
+
+    <header
+        id="home"
+        class="hero"
+    >
+
+        <div class="hero-content">
+
+            <h1>
+                UraniumOwner
+            </h1>
+
+            <h2>
+                Developer • Creator • Modder • Experimenter
+            </h2>
+
+            <p>
+                Welcome to my corner of the internet.
+                Projects, mods, code, experiments,
+                development updates and whatever else
+                I decide to build.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    class="button"
+                    href="#projects"
+                >
+                    🚀 Projects
+                </a>
+
+                <a
+                    class="button secondary"
+                    href="#mods"
+                >
+                    🧩 Mods
+                </a>
+
+                <a
+                    class="button secondary"
+                    href="#code"
+                >
+                    💻 Code Lab
+                </a>
+
+                <a
+                    class="button secondary"
+                    href="https://github.com/UraniumOwner"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         PROJECTS
+    ========================================== -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            🚀 Projects
+        </h2>
+
+        <p class="section-description">
+            Software, websites, games and experiments.
         </p>
 
         <input
-            type="text"
-            id="usernameInput"
-            placeholder="Enter username"
-            maxlength="20"
+            id="projectSearch"
+            class="search-box"
+            placeholder="🔎 Search projects..."
         >
 
-        <br>
+        <div
+            id="projectsGrid"
+            class="grid"
+        ></div>
 
-        <button id="loginButton">
-            Sign In
-        </button>
+        <div
+            id="projectNoResults"
+            class="no-results"
+        >
+            No projects found.
+        </div>
 
-        <p id="loginMessage"></p>
+    </section>
 
-    </div>
 
-    <div id="gameSection">
 
-        <h2>💰 Fake Money Clicker</h2>
+    <!-- ==========================================
+         MODS
+    ========================================== -->
+
+    <section id="mods">
+
+        <h2 class="section-title">
+            🧩 Mods
+        </h2>
+
+        <p class="section-description">
+            Mods and add-ons released on this site.
+        </p>
+
+        <input
+            id="modSearch"
+            class="search-box"
+            placeholder="🔎 Search mods or games..."
+        >
+
+        <div class="filters">
+
+            <button
+                class="filter active"
+                data-filter="all"
+            >
+                All
+            </button>
+
+            <button
+                class="filter"
+                data-filter="Roblox"
+            >
+                Roblox
+            </button>
+
+            <button
+                class="filter"
+                data-filter="Minecraft"
+            >
+                Minecraft
+            </button>
+
+            <button
+                class="filter"
+                data-filter="Other"
+            >
+                Other
+            </button>
+
+        </div>
+
+        <div
+            id="modsGrid"
+            class="grid"
+        ></div>
+
+        <div
+            id="modNoResults"
+            class="no-results"
+        >
+            No mods found.
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         POSTS
+    ========================================== -->
+
+    <section id="posts">
+
+        <h2 class="section-title">
+            📰 Posts
+        </h2>
+
+        <p class="section-description">
+            Development updates, announcements and news.
+        </p>
+
+        <div
+            id="postsGrid"
+            class="grid"
+        ></div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         CODE LAB
+    ========================================== -->
+
+    <section id="code">
+
+        <h2 class="section-title">
+            💻 Code Lab
+        </h2>
+
+        <p class="section-description">
+            A chaotic collection of languages and technologies.
+        </p>
+
+        <div
+            id="codeLab"
+            class="code-lab"
+        ></div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         ABOUT
+    ========================================== -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            👤 About
+        </h2>
+
+        <p class="section-description">
+            About the person behind the code.
+        </p>
+
+        <div class="about-box">
+
+            <p>
+                Hey! I'm UraniumOwner.
+            </p>
+
+            <p>
+                I enjoy programming, computers,
+                space, games, modding and
+                experimenting with technology.
+            </p>
+
+            <p>
+                This site is where I can publish
+                projects, mods and development updates.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         TECHNOLOGIES
+    ========================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🛠️ Technologies
+        </h2>
+
+        <p class="section-description">
+            Languages and technologies I work with or explore.
+        </p>
+
+        <div class="skills">
+
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">TypeScript</div>
+            <div class="skill">Python</div>
+            <div class="skill">Lua</div>
+            <div class="skill">Luau</div>
+            <div class="skill">C</div>
+            <div class="skill">C++</div>
+            <div class="skill">C#</div>
+            <div class="skill">Java</div>
+            <div class="skill">PHP</div>
+            <div class="skill">SQL</div>
+            <div class="skill">Rust</div>
+            <div class="skill">Go</div>
+            <div class="skill">Kotlin</div>
+            <div class="skill">Swift</div>
+            <div class="skill">Ruby</div>
+            <div class="skill">Bash</div>
+            <div class="skill">PowerShell</div>
+            <div class="skill">Assembly</div>
+            <div class="skill">JSON</div>
+            <div class="skill">XML</div>
+            <div class="skill">YAML</div>
+            <div class="skill">Markdown</div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         CONTACT
+    ========================================== -->
+
+    <section>
+
+        <div class="contact-box">
+
+            <h2>
+                🌐 Find My Code
+            </h2>
+
+            <p>
+                More source code and projects are available
+                on my GitHub.
+            </p>
+
+            <a
+                class="button"
+                href="https://github.com/UraniumOwner"
+                target="_blank"
+                rel="noopener"
+            >
+                View GitHub
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
 
         <p>
-            Signed in as:
-            <span id="accountName"></span>
+            © 2026 UraniumOwner
         </p>
 
         <p>
-            Fake Money:
+            Built with HTML, CSS & JavaScript.
         </p>
 
-        <div id="money">$0</div>
+    </footer>
 
-        <button id="rewardButton">
-            💰 Earn $1,000
-        </button>
 
-        <button id="logoutButton" class="logout">
-            Sign Out
-        </button>
-
-        <div id="reward"></div>
-
-    </div>
 
     <script>
 
-        let currentUsername = "";
-        let money = 0;
+        /* ==========================================
+           PROJECT DATABASE
+        ========================================== */
 
-        const loginSection = document.getElementById("loginSection");
-        const gameSection = document.getElementById("gameSection");
+        const projects = [
 
-        const usernameInput = document.getElementById("usernameInput");
-        const loginButton = document.getElementById("loginButton");
-        const loginMessage = document.getElementById("loginMessage");
+            {
+                title: "CodeForge AI",
 
-        const accountName = document.getElementById("accountName");
-        const moneyDisplay = document.getElementById("money");
+                description:
+                    "An AI-powered coding project for generating and experimenting with code.",
 
-        const rewardButton = document.getElementById("rewardButton");
-        const logoutButton = document.getElementById("logoutButton");
+                technologies:
+                    ["HTML", "CSS", "JavaScript", "AI"],
 
-        const rewardMessage = document.getElementById("reward");
+                date: "2026",
 
+                icon: "🤖",
 
-        loginButton.onclick = function() {
+                link: "#"
+            },
 
-            let username = usernameInput.value.trim();
+            {
+                title: "UraniumOwner Website",
 
-            if (username === "") {
+                description:
+                    "My personal developer portfolio, mod hub and project website.",
 
-                loginMessage.textContent =
-                    "❌ Please enter a username.";
+                technologies:
+                    ["HTML", "CSS", "JavaScript"],
 
-                loginMessage.className = "error";
+                date: "September 2026",
 
-                return;
+                icon: "🌐",
+
+                link:
+                    "https://uraniumowner.github.io/my-websites/"
+            },
+
+            {
+                title: "Future Game",
+
+                description:
+                    "A future game project currently being planned.",
+
+                technologies:
+                    ["Game Development"],
+
+                date: "Coming Soon",
+
+                icon: "🎮",
+
+                link: "#"
             }
 
-            currentUsername = username;
+        ];
 
-            let storageKey =
-                "fakeMoney_" + currentUsername;
 
-            let savedMoney =
-                localStorage.getItem(storageKey);
 
-            if (savedMoney !== null) {
+        /* ==========================================
+           MOD DATABASE
+        ========================================== */
 
-                money = Number(savedMoney);
+        const mods = [
 
-                loginMessage.textContent =
-                    "✅ Welcome back!";
+            {
+                title: "Example Roblox Mod",
 
-                loginMessage.className =
-                    "success";
+                game: "Roblox",
 
-            } else {
+                version: "1.0",
 
-                money = 0;
+                description:
+                    "Example listing for a future Roblox mod.",
 
-                loginMessage.textContent =
-                    "🎉 New account created!";
+                technologies:
+                    ["Roblox", "Luau"],
 
-                loginMessage.className =
-                    "success";
+                date: "September 2026",
 
-                localStorage.setItem(
-                    storageKey,
-                    money
-                );
+                icon: "🧩",
+
+                download: "#",
+
+                details: "#"
+            },
+
+            {
+                title: "Example Minecraft Mod",
+
+                game: "Minecraft",
+
+                version: "1.0",
+
+                description:
+                    "Example listing for a future Minecraft mod.",
+
+                technologies:
+                    ["Minecraft", "Java"],
+
+                date: "Coming Soon",
+
+                icon: "⛏️",
+
+                download: "#",
+
+                details: "#"
             }
 
-            accountName.textContent =
-                currentUsername;
-
-            moneyDisplay.textContent =
-                "$" + money.toLocaleString();
-
-            loginSection.style.display =
-                "none";
-
-            gameSection.style.display =
-                "block";
-        };
+        ];
 
 
-        rewardButton.onclick = function() {
 
-            money = money + 1000;
+        /* ==========================================
+           POST DATABASE
+        ========================================== */
 
-            moneyDisplay.textContent =
-                "$" + money.toLocaleString();
+        const posts = [
 
-            let storageKey =
-                "fakeMoney_" + currentUsername;
+            {
+                title: "Welcome to My Website!",
 
-            localStorage.setItem(
-                storageKey,
-                money
+                description:
+                    "The new UraniumOwner developer and mod hub is officially online.",
+
+                date: "September 2026",
+
+                icon: "🎉"
+            },
+
+            {
+                title: "Building the Mod Hub",
+
+                description:
+                    "I'm working on a system for publishing and organizing mods.",
+
+                date: "September 2026",
+
+                icon: "🧩"
+            },
+
+            {
+                title: "Learning Web Development",
+
+                description:
+                    "Experimenting with HTML, CSS, JavaScript and a whole lot more.",
+
+                date: "2026",
+
+                icon: "💻"
+            }
+
+        ];
+
+
+
+        /* ==========================================
+           CODE LAB DATABASE
+        ========================================== */
+
+        const codeExamples = [
+
+            {
+                language: "HTML",
+                file: "index.html",
+
+                code:
+`<h1>Hello, world!</h1>
+<p>Welcome to my website.</p>`,
+
+                note:
+                    "The structure of the website."
+            },
+
+            {
+                language: "CSS",
+                file: "style.css",
+
+                code:
+`body {
+    background: #070b14;
+    color: white;
+}`,
+
+                note:
+                    "Controls how the website looks."
+            },
+
+            {
+                language: "JavaScript",
+                file: "script.js",
+
+                code:
+`const money = 1000;
+
+console.log(money);`,
+
+                note:
+                    "Adds logic and interactivity."
+            },
+
+            {
+                language: "TypeScript",
+                file: "app.ts",
+
+                code:
+`let project: string = "CodeForge AI";
+
+console.log(project);`,
+
+                note:
+                    "JavaScript with static types."
+            },
+
+            {
+                language: "Python",
+                file: "main.py",
+
+                code:
+`project = "UraniumOwner"
+
+print(project)`,
+
+                note:
+                    "A simple Python program."
+            },
+
+            {
+                language: "Lua",
+                file: "main.lua",
+
+                code:
+`local message = "Hello!"
+
+print(message)`,
+
+                note:
+                    "Lightweight scripting language."
+            },
+
+            {
+                language: "Luau",
+                file: "script.luau",
+
+                code:
+`local money = 1000
+
+print("Money:", money)`,
+
+                note:
+                    "The scripting language used by Roblox."
+            },
+
+            {
+                language: "C",
+                file: "main.c",
+
+                code:
+`#include <stdio.h>
+
+int main() {
+    printf("Hello!\\n");
+    return 0;
+}`,
+
+                note:
+                    "Classic systems programming."
+            },
+
+            {
+                language: "C++",
+                file: "main.cpp",
+
+                code:
+`#include <iostream>
+
+int main() {
+    std::cout << "Hello!";
+    return 0;
+}`,
+
+                note:
+                    "Powerful compiled programming language."
+            },
+
+            {
+                language: "C#",
+                file: "Program.cs",
+
+                code:
+`using System;
+
+Console.WriteLine("Hello!");`,
+
+                note:
+                    "Commonly used with .NET and game development."
+            },
+
+            {
+                language: "Java",
+                file: "Main.java",
+
+                code:
+`public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello!");
+    }
+}`,
+
+                note:
+                    "Popular general-purpose language."
+            },
+
+            {
+                language: "PHP",
+                file: "index.php",
+
+                code:
+`<?php
+
+$message = "Hello!";
+echo $message;
+
+?>`,
+
+                note:
+                    "Server-side web programming."
+            },
+
+            {
+                language: "SQL",
+                file: "database.sql",
+
+                code:
+`SELECT *
+FROM projects
+WHERE published = true;`,
+
+                note:
+                    "Used to work with databases."
+            },
+
+            {
+                language: "Rust",
+                file: "main.rs",
+
+                code:
+`fn main() {
+    println!("Hello!");
+}`,
+
+                note:
+                    "A memory-safe systems language."
+            },
+
+            {
+                language: "Go",
+                file: "main.go",
+
+                code:
+`package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello!")
+}`,
+
+                note:
+                    "Designed for simple, fast software."
+            },
+
+            {
+                language: "Kotlin",
+                file: "Main.kt",
+
+                code:
+`fun main() {
+    println("Hello!")
+}`,
+
+                note:
+                    "Modern JVM programming language."
+            },
+
+            {
+                language: "Swift",
+                file: "main.swift",
+
+                code:
+`let message = "Hello!"
+
+print(message)`,
+
+                note:
+                    "Apple's modern programming language."
+            },
+
+            {
+                language: "Ruby",
+                file: "main.rb",
+
+                code:
+`message = "Hello!"
+
+puts message`,
+
+                note:
+                    "Readable dynamic programming language."
+            },
+
+            {
+                language: "Bash",
+                file: "script.sh",
+
+                code:
+`#!/bin/bash
+
+echo "Hello from Bash!"`,
+
+                note:
+                    "Shell scripting on Unix-like systems."
+            },
+
+            {
+                language: "PowerShell",
+                file: "script.ps1",
+
+                code:
+`$message = "Hello!"
+
+Write-Host $message`,
+
+                note:
+                    "PowerShell scripting."
+            },
+
+            {
+                language: "Assembly",
+                file: "main.asm",
+
+                code:
+`section .text
+
+global _start
+
+_start:
+    nop`,
+
+                note:
+                    "Very low-level programming."
+            },
+
+            {
+                language: "JSON",
+                file: "project.json",
+
+                code:
+`{
+    "name": "My Project",
+    "version": "1.0"
+}`,
+
+                note:
+                    "Common data format for web applications."
+            },
+
+            {
+                language: "XML",
+                file: "project.xml",
+
+                code:
+`<project>
+    <name>My Project</name>
+    <version>1.0</version>
+</project>`,
+
+                note:
+                    "Structured markup and data format."
+            },
+
+            {
+                language: "YAML",
+                file: "config.yml",
+
+                code:
+`project:
+  name: My Project
+  version: 1.0`,
+
+                note:
+                    "Human-readable configuration format."
+            },
+
+            {
+                language: "Markdown",
+                file: "README.md",
+
+                code:
+`# My Project
+
+This is my project.
+
+- Cool
+- Awesome
+- Yes`,
+
+                note:
+                    "Used heavily for documentation."
+            }
+
+        ];
+
+
+
+        /* ==========================================
+           PROJECT RENDERER
+        ========================================== */
+
+        const projectsGrid =
+            document.getElementById(
+                "projectsGrid"
             );
 
-            rewardMessage.textContent =
-                "🎉 You earned $1,000 fake money!";
 
-            setTimeout(function() {
+        function renderProjects(search = "") {
 
-                rewardMessage.textContent = "";
+            projectsGrid.innerHTML = "";
 
-            }, 1000);
-        };
+            const text =
+                search.toLowerCase();
 
 
-        logoutButton.onclick = function() {
+            const results =
+                projects.filter(
+                    function(project) {
 
-            currentUsername = "";
-            money = 0;
+                        return (
+                            project.title
+                                .toLowerCase()
+                                .includes(text)
 
-            gameSection.style.display =
-                "none";
+                            ||
 
-            loginSection.style.display =
-                "block";
+                            project.description
+                                .toLowerCase()
+                                .includes(text)
 
-            usernameInput.value = "";
+                            ||
 
-            loginMessage.textContent =
-                "👋 Signed out!";
+                            project.technologies
+                                .join(" ")
+                                .toLowerCase()
+                                .includes(text)
+                        );
 
-            loginMessage.className =
-                "success";
-        };
+                    }
+                );
+
+
+            document.getElementById(
+                "projectNoResults"
+            ).style.display =
+                results.length === 0
+                    ? "block"
+                    : "none";
+
+
+            results.forEach(
+                function(project) {
+
+                    const card =
+                        document.createElement(
+                            "article"
+                        );
+
+                    card.className =
+                        "card";
+
+
+                    const tags =
+                        project.technologies
+                            .map(
+                                function(tag) {
+
+                                    return `
+                                        <span class="tag">
+                                            ${tag}
+                                        </span>
+                                    `;
+
+                                }
+                            )
+                            .join("");
+
+
+                    card.innerHTML = `
+
+                        <div class="card-image">
+                            ${project.icon}
+                        </div>
+
+                        <div class="card-content">
+
+                            <h3>
+                                ${project.title}
+                            </h3>
+
+                            <div class="date">
+                                ${project.date}
+                            </div>
+
+                            <p class="description">
+                                ${project.description}
+                            </p>
+
+                            <div class="tags">
+                                ${tags}
+                            </div>
+
+                            <div class="card-buttons">
+
+                                <a
+                                    class="small-button"
+                                    href="${project.link}"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    View Project →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    projectsGrid.appendChild(card);
+
+                }
+            );
+
+        }
+
+
+        renderProjects();
+
+
+
+        /* ==========================================
+           PROJECT SEARCH
+        ========================================== */
+
+        document
+            .getElementById("projectSearch")
+            .addEventListener(
+                "input",
+                function() {
+
+                    renderProjects(
+                        this.value
+                    );
+
+                }
+            );
+
+
+
+        /* ==========================================
+           MOD RENDERING
+        ========================================== */
+
+        const modsGrid =
+            document.getElementById(
+                "modsGrid"
+            );
+
+
+        let currentModFilter =
+            "all";
+
+
+        function renderMods(search = "") {
+
+            modsGrid.innerHTML = "";
+
+            const text =
+                search.toLowerCase();
+
+
+            const results =
+                mods.filter(
+                    function(mod) {
+
+                        const filterMatch =
+                            currentModFilter === "all"
+                            ||
+                            mod.game === currentModFilter
+                            ||
+                            (
+                                currentModFilter === "Other"
+                                &&
+                                mod.game !== "Roblox"
+                                &&
+                                mod.game !== "Minecraft"
+                            );
+
+
+                        const searchMatch =
+                            mod.title
+                                .toLowerCase()
+                                .includes(text)
+
+                            ||
+
+                            mod.game
+                                .toLowerCase()
+                                .includes(text)
+
+                            ||
+
+                            mod.description
+                                .toLowerCase()
+                                .includes(text);
+
+
+                        return (
+                            filterMatch
+                            &&
+                            searchMatch
+                        );
+
+                    }
+                );
+
+
+            document.getElementById(
+                "modNoResults"
+            ).style.display =
+                results.length === 0
+                    ? "block"
+                    : "none";
+
+
+            results.forEach(
+                function(mod) {
+
+                    const card =
+                        document.createElement(
+                            "article"
+                        );
+
+                    card.className =
+                        "card";
+
+
+                    const tags =
+                        mod.technologies
+                            .map(
+                                function(tag) {
+
+                                    return `
+                                        <span class="tag">
+                                            ${tag}
+                                        </span>
+                                    `;
+
+                                }
+                            )
+                            .join("");
+
+
+                    card.innerHTML = `
+
+                        <div class="card-image">
+                            ${mod.icon}
+                        </div>
+
+                        <div class="card-content">
+
+                            <h3>
+                                ${mod.title}
+                            </h3>
+
+                            <div class="date">
+                                ${mod.game}
+                                • Version ${mod.version}
+                                • ${mod.date}
+                            </div>
+
+                            <p class="description">
+                                ${mod.description}
+                            </p>
+
+                            <div class="tags">
+                                ${tags}
+                            </div>
+
+                            <div class="card-buttons">
+
+                                <a
+                                    class="small-button"
+                                    href="${mod.download}"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    📦 Download
+                                </a>
+
+                                <a
+                                    class="small-button secondary"
+                                    href="${mod.details}"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    Details
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+
+                    modsGrid.appendChild(card);
+
+                }
+            );
+
+        }
+
+
+        renderMods();
+
+
+
+        /* ==========================================
+           MOD SEARCH
+        ========================================== */
+
+        document
+            .getElementById("modSearch")
+            .addEventListener(
+                "input",
+                function() {
+
+                    renderMods(
+                        this.value
+                    );
+
+                }
+            );
+
+
+
+        /* ==========================================
+           MOD FILTERS
+        ========================================== */
+
+        document
+            .querySelectorAll(".filter")
+            .forEach(
+                function(button) {
+
+                    button.addEventListener(
+                        "click",
+                        function() {
+
+                            document
+                                .querySelectorAll(
+                                    ".filter"
+                                )
+                                .forEach(
+                                    function(btn) {
+
+                                        btn.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                            this.classList.add(
+                                "active"
+                            );
+
+
+                            currentModFilter =
+                                this.dataset.filter;
+
+
+                            renderMods(
+                                document
+                                    .getElementById(
+                                        "modSearch"
+                                    )
+                                    .value
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /* ==========================================
+           POSTS
+        ========================================== */
+
+        const postsGrid =
+            document.getElementById(
+                "postsGrid"
+            );
+
+
+        posts.forEach(
+            function(post) {
+
+                const card =
+                    document.createElement(
+                        "article"
+                    );
+
+                card.className =
+                    "card";
+
+
+                card.innerHTML = `
+
+                    <div class="card-image">
+                        ${post.icon}
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>
+                            ${post.title}
+                        </h3>
+
+                        <div class="date">
+                            ${post.date}
+                        </div>
+
+                        <p class="description">
+                            ${post.description}
+                        </p>
+
+                        <a
+                            class="project-link"
+                            href="#"
+                        >
+                            Read Post →
+                        </a>
+
+                    </div>
+
+                `;
+
+
+                postsGrid.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+
+        /* ==========================================
+           CODE LAB
+        ========================================== */
+
+        const codeLab =
+            document.getElementById(
+                "codeLab"
+            );
+
+
+        codeExamples.forEach(
+            function(example) {
+
+                const card =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                card.className =
+                    "code-card";
+
+
+                card.innerHTML = `
+
+                    <div class="code-header">
+
+                        <span class="language">
+                            ${example.language}
+                        </span>
+
+                        <span class="code-file">
+                            ${example.file}
+                        </span>
+
+                    </div>
+
+                    <pre><code>${escapeHTML(
+                        example.code
+                    )}</code></pre>
+
+                    <div class="code-note">
+                        ${example.note}
+                    </div>
+
+                `;
+
+
+                codeLab.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+
+        /* ==========================================
+           HTML ESCAPER
+        ========================================== */
+
+        function escapeHTML(text) {
+
+            return text
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+
+        }
+
 
     </script>
 
+
 </body>
+
 </html>
