@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Website</title>
+
+    <style>
+        body {
+            background-color: #111827;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #60a5fa;
+            font-size: 42px;
+        }
+
+        h2 {
+            color: #93c5fd;
+            margin-top: 35px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        ul {
+            background-color: #1f2937;
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-align: left;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        li {
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        input {
+            background-color: #1f2937;
+            color: white;
+            border: 1px solid #374151;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            margin: 5px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #60a5fa;
+        }
+
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .logout {
+            background-color: #4b5563;
+        }
+
+        .logout:hover {
+            background-color: #374151;
+        }
+
+        #money {
+            font-size: 32px;
+            font-weight: bold;
+            color: #4ade80;
+            margin: 15px;
+        }
+
+        #reward {
+            font-size: 22px;
+            margin-top: 20px;
+            min-height: 30px;
+        }
+
+        #loginSection,
+        #gameSection {
+            background-color: #1f2937;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        #gameSection {
+            display: none;
+        }
+
+        #accountName {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #f87171;
+        }
+
+        .success {
+            color: #4ade80;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Welcome to My Website!</h1>
+
+    <p>
+        I am learning web development!
+    </p>
+
+    <h2>About Me</h2>
+
+    <p>
+        I like coding, computers, and space.
+    </p>
+
+    <h2>My Projects</h2>
+
+    <ul>
+        <li>CodeForge AI</li>
+        <li>My future games</li>
+        <li>Random experiments</li>
+    </ul>
+
+    <div id="loginSection">
+
+        <h2>🔐 Sign In</h2>
+
+        <p>
+            Enter a username to load your fake-money account.
+        </p>
+
+        <input
+            type="text"
+            id="usernameInput"
+            placeholder="Enter username"
+            maxlength="20"
+        >
+
+        <br>
+
+        <button id="loginButton">
+            Sign In
+        </button>
+
+        <p id="loginMessage"></p>
+
+    </div>
+
+    <div id="gameSection">
+
+        <h2>💰 Fake Money Clicker</h2>
+
+        <p>
+            Signed in as:
+            <span id="accountName"></span>
+        </p>
+
+        <p>
+            Fake Money:
+        </p>
+
+        <div id="money">$0</div>
+
+        <button id="rewardButton">
+            💰 Earn $1,000
+        </button>
+
+        <button id="logoutButton" class="logout">
+            Sign Out
+        </button>
+
+        <div id="reward"></div>
+
+    </div>
+
+    <script>
+
+        let currentUsername = "";
+        let money = 0;
+
+        const loginSection = document.getElementById("loginSection");
+        const gameSection = document.getElementById("gameSection");
+
+        const usernameInput = document.getElementById("usernameInput");
+        const loginButton = document.getElementById("loginButton");
+        const loginMessage = document.getElementById("loginMessage");
+
+        const accountName = document.getElementById("accountName");
+        const moneyDisplay = document.getElementById("money");
+
+        const rewardButton = document.getElementById("rewardButton");
+        const logoutButton = document.getElementById("logoutButton");
+
+        const rewardMessage = document.getElementById("reward");
+
+
+        loginButton.onclick = function() {
+
+            let username = usernameInput.value.trim();
+
+            if (username === "") {
+
+                loginMessage.textContent =
+                    "❌ Please enter a username.";
+
+                loginMessage.className = "error";
+
+                return;
+            }
+
+            currentUsername = username;
+
+            let storageKey =
+                "fakeMoney_" + currentUsername;
+
+            let savedMoney =
+                localStorage.getItem(storageKey);
+
+            if (savedMoney !== null) {
+
+                money = Number(savedMoney);
+
+                loginMessage.textContent =
+                    "✅ Welcome back!";
+
+                loginMessage.className =
+                    "success";
+
+            } else {
+
+                money = 0;
+
+                loginMessage.textContent =
+                    "🎉 New account created!";
+
+                loginMessage.className =
+                    "success";
+
+                localStorage.setItem(
+                    storageKey,
+                    money
+                );
+            }
+
+            accountName.textContent =
+                currentUsername;
+
+            moneyDisplay.textContent =
+                "$" + money.toLocaleString();
+
+            loginSection.style.display =
+                "none";
+
+            gameSection.style.display =
+                "block";
+        };
+
+
+        rewardButton.onclick = function() {
+
+            money = money + 1000;
+
+            moneyDisplay.textContent =
+                "$" + money.toLocaleString();
+
+            let storageKey =
+                "fakeMoney_" + currentUsername;
+
+            localStorage.setItem(
+                storageKey,
+                money
+            );
+
+            rewardMessage.textContent =
+                "🎉 You earned $1,000 fake money!";
+
+            setTimeout(function() {
+
+                rewardMessage.textContent = "";
+
+            }, 1000);
+        };
+
+
+        logoutButton.onclick = function() {
+
+            currentUsername = "";
+            money = 0;
+
+            gameSection.style.display =
+                "none";
+
+            loginSection.style.display =
+                "block";
+
+            usernameInput.value = "";
+
+            loginMessage.textContent =
+                "👋 Signed out!";
+
+            loginMessage.className =
+                "success";
+        };
+
+    </script>
+
+</body>
+</html>
