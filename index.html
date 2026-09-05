@@ -705,6 +705,12 @@
 
     </style>
 
+
+<style id="fart-easter-egg-styles">
+#fart-easter-egg{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transform:scale(.7) rotate(-2deg);transition:opacity .18s ease,transform .18s ease;background:rgba(0,0,0,.82);backdrop-filter:blur(3px)}
+#fart-easter-egg.show{opacity:1;transform:scale(1) rotate(0)}
+#fart-easter-egg .fart-message{max-width:90vw;padding:30px 38px;border:3px solid currentColor;border-radius:22px;text-align:center;font-size:clamp(28px,6vw,76px);line-height:1.05;font-weight:900;letter-spacing:-2px;box-shadow:0 0 40px rgba(255,255,255,.18)}
+</style>
 </head>
 
 
@@ -2226,6 +2232,11 @@ This is my project.
     </script>
 
 
+
+<div id="fart-easter-egg" aria-hidden="true"><div class="fart-message">i farted in my grandpas breathing machine</div></div>
+<script id="fart-easter-egg-script">
+(()=>{let progress=0,lastX=null,lastY=null,hideTimer=null;const zones=[{x1:.10,y1:.32,x2:.25,y2:.68},{x1:.30,y1:.32,x2:.44,y2:.68},{x1:.49,y1:.32,x2:.64,y2:.68},{x1:.70,y1:.32,x2:.87,y2:.68}];const inside=(x,y,z)=>x>=innerWidth*z.x1&&x<=innerWidth*z.x2&&y>=innerHeight*z.y1&&y<=innerHeight*z.y2;const reset=()=>{progress=0;lastX=lastY=null};const show=()=>{const p=document.getElementById('fart-easter-egg');p.classList.add('show');clearTimeout(hideTimer);hideTimer=setTimeout(()=>{p.classList.remove('show');setTimeout(reset,250)},4200)};addEventListener('mousemove',e=>{let{x,y}=e.clientX?{x:e.clientX,y:e.clientY}:{x:0,y:0};let moved=lastX!==null&&Math.hypot(x-lastX,y-lastY)>=2;if(progress===0){if(inside(x,y,zones[0]))progress=1}else if(progress<4){if(moved&&inside(x,y,zones[progress]))progress++;if(moved&&!inside(x,y,zones[progress]||zones[3])&&Math.abs(x-lastX)>innerWidth*.18)reset()}lastX=x;lastY=y;if(progress===4){show();reset()}})})();
+</script>
 </body>
 
 </html>
